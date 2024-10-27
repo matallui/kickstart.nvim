@@ -1,6 +1,9 @@
 -- Collection of various small independent plugins/modules
 return {
   'echasnovski/mini.nvim',
+  dependencies = {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
   config = function()
     -- Better Around/Inside textobjects
     --
@@ -39,6 +42,17 @@ return {
     statusline.section_location = function()
       return '%2l:%-2v'
     end
+
+    -- Comment code
+    require('mini.comment').setup {
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    }
+    vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Comment toggle current line', remap = true })
+    vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Comment toggle selected lines', remap = true })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
