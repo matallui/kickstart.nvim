@@ -84,6 +84,9 @@ return {
         -- or a suggestion from your LSP for this to activate.
         map('<leader>la', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
 
+        -- Show LSP information
+        map('<leader>li', ':LspInfo<CR>', 'LSP Info')
+
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, 'Goto Declaration')

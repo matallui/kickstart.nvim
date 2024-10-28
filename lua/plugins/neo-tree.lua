@@ -12,6 +12,21 @@ return {
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = true,
+        hide_by_name = {
+          'node_modules',
+          '.git',
+        },
+        always_show_by_pattern = {
+          '.env*',
+        },
+        never_show = {
+          '.DS_Store',
+          'thumbs.db',
+        },
+      },
       follow_current_file = {
         enabled = true, -- This will find and focus the file in the active buffer every time
         leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
