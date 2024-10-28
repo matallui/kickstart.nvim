@@ -37,6 +37,7 @@ return { -- Autocompletion
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
+    local cmp_window = require 'cmp.config.window'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
@@ -46,21 +47,22 @@ return { -- Autocompletion
           luasnip.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
-
+      window = {
+        completion = cmp_window.bordered(),
+        documentation = cmp_window.bordered(),
+      },
+      completion = {
+        autocomplete = false,
+      },
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
-        -- Select the [n]ext item
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        -- Select the next item
+        ['<C-j>'] = cmp.mapping.select_next_item(),
         -- Select the [p]revious item
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-
-        -- Scroll the documentation window [b]ack / [f]orward
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
 
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
@@ -69,9 +71,9 @@ return { -- Autocompletion
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
-        --['<CR>'] = cmp.mapping.confirm { select = true },
-        --['<Tab>'] = cmp.mapping.select_next_item(),
-        --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
@@ -101,6 +103,7 @@ return { -- Autocompletion
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
+        { name = 'supermaven', priority = 2000 },
         {
           name = 'lazydev',
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
