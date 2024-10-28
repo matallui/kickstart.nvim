@@ -69,7 +69,8 @@ return {
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Seach Help' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search Files' })
+    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search File' })
+    vim.keymap.set('n', '<leader>f', builtin.git_files, { desc = 'Find Git File' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Select Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search Word Under Cursor' })
     vim.keymap.set('n', '<leader>st', builtin.live_grep, { desc = 'Search Text' })
