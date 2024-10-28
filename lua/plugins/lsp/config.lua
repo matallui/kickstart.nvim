@@ -15,6 +15,21 @@ return {
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
+    -- Set default diagnostic config
+    vim.diagnostic.config {
+      virtual_text = true,
+      update_in_insert = false,
+      underline = true,
+      severity_sort = true,
+      float = {
+        focusable = true,
+        style = 'minimal',
+        border = 'rounded',
+        source = true,
+        header = '',
+        prefix = '',
+      },
+    }
     -- Brief aside: **What is LSP?**
     --
     -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -40,8 +55,11 @@ return {
     -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
     -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
-    -- Show LSP information
+    -- Global LSP keymappings
     vim.keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = 'LSP Info' })
+    vim.keymap.set('n', '<leader>lI', ':Mason<CR>', { desc = 'Mason Info' })
+    vim.keymap.set('n', '<leader>lj', ':lua vim.diagnostic.goto_next()<CR>', { desc = 'Next Diagnostic' })
+    vim.keymap.set('n', '<leader>lk', ':lua vim.diagnostic.goto_prev()<CR>', { desc = 'Prev Diagnostic' })
 
     --  This function gets run when an LSP attaches to a particular buffer.
     --    That is to say, every time a new file is opened that is associated with
