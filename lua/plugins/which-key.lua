@@ -41,10 +41,10 @@ return {
       },
     },
     spec = {
+      { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
       { '<leader>l', group = 'LSP' },
       { '<leader>s', group = 'Search' },
-      { '<leader>t', group = 'Toggle' },
-      { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
+      { '<leader>u', group = 'UI' },
     },
   },
 }

@@ -51,8 +51,8 @@ return {
         end,
       },
     }
-    vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Comment toggle current line', remap = true })
-    vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Comment toggle selected lines', remap = true })
+    vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Comment line', remap = true })
+    vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Comment lines', remap = true })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
