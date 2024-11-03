@@ -42,11 +42,9 @@ return {
     },
     spec = {
       { '<leader>l', group = 'LSP' },
-      { '<leader>d', group = '[D]ocument' },
-      { '<leader>r', group = '[R]ename' },
-      { '<leader>s', group = '[S]earch' },
-      { '<leader>t', group = '[T]oggle' },
-      { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
+      { '<leader>s', group = 'Search' },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
     },
   },
 }
