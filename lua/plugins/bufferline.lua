@@ -41,8 +41,8 @@ return {
       }
 
       vim.keymap.set('n', '<leader>c', '<cmd>BufDel<cr>', { desc = 'Close buffer' })
+      vim.keymap.set('n', '<leader>C', '<cmd>BufDel!<cr>', { desc = 'Force close buffer' })
     end,
-    opts = {
-    },
+    opts = {},
   },
 }
