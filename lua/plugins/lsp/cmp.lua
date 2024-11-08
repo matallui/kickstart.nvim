@@ -52,7 +52,7 @@ return { -- Autocompletion
         documentation = cmp_window.bordered(),
       },
       completion = {
-        autocomplete = false,
+        -- autocomplete = false,
       },
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
@@ -103,15 +103,16 @@ return { -- Autocompletion
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
-        { name = 'supermaven', priority = 2000 },
+        { name = 'nvim_lsp' },
         {
           name = 'lazydev',
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
           group_index = 0,
         },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
         { name = 'path' },
+        { name = 'luasnip' },
+        { name = 'nvim_lua' },
+        { name = 'buffer' },
       },
     }
   end,
