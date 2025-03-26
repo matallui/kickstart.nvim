@@ -1,14 +1,29 @@
-return {
+-- Function to check for Biome config file
+local function has_biome_config()
+  local cwd = vim.loop.cwd()
+  local biome_config_exists = vim.loop.fs_stat(cwd .. '/biome.json') or vim.loop.fs_stat(cwd .. '/biome.jsonc')
+  return biome_config_exists
+end
 
-  { -- Linting
+return {
+  {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+      local js_linters = { 'eslint_d' }
+      if has_biome_config() then
+        js_linters = { 'biomejs' }
+      end
       lint.linters_by_ft = {
         -- markdown = { 'markdownlint' },
-        -- javascript = { 'eslint_d' },
-        -- typescriptreact = { 'eslint_d' },
+        css = js_linters,
+        json = js_linters,
+        jsonc = js_linters,
+        javascript = js_linters,
+        javascriptreact = js_linters,
+        typescript = js_linters,
+        typescriptreact = js_linters,
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

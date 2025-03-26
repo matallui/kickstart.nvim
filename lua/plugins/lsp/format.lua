@@ -31,16 +31,23 @@ return {
         lsp_format = lsp_format_opt,
       }
     end,
+    formatters = {
+      biome = {
+        -- only use if config files are present in the project
+        require_cwd = true,
+      },
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
+
+      -- You can use 'stop_after_first' to run the first available formatter from the list
+      javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
     },
   },
 }
